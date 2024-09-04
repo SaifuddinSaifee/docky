@@ -1,15 +1,8 @@
 import subprocess
 import shutil
-from typing import Tuple, List, Optional, Dict
+from typing import Tuple, List, Optional
 import logging
 import platform
-import json
-from datetime import datetime
-
-from models.container import Container
-from models.image import Image
-from models.volume import Volume
-from models.network import Network
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -183,86 +176,6 @@ class DockerEngineManager:
 
         return True
 
-    @classmethod
-    def get_containers(cls) -> List[Container]:
-        """
-        Get a list of all Docker containers.
-
-        Returns:
-            List[Container]: A list of Container objects.
-        """
-        success, output = cls.run_docker_command(["ps", "-a", "--format", "{{json .}}"])
-        if not success:
-            logger.error("Failed to get containers")
-            return []
-
-        containers = []
-        for line in output.split('\n'):
-            if line:
-                container_data = json.loads(line)
-                containers.append(Container.from_dict(container_data))
-        return containers
-
-    @classmethod
-    def get_images(cls) -> List[Image]:
-        """
-        Get a list of all Docker images.
-
-        Returns:
-            List[Image]: A list of Image objects.
-        """
-        success, output = cls.run_docker_command(["images", "--format", "{{json .}}"])
-        if not success:
-            logger.error("Failed to get images")
-            return []
-
-        images = []
-        for line in output.split('\n'):
-            if line:
-                image_data = json.loads(line)
-                images.append(Image.from_dict(image_data))
-        return images
-
-    @classmethod
-    def get_volumes(cls) -> List[Volume]:
-        """
-        Get a list of all Docker volumes.
-
-        Returns:
-            List[Volume]: A list of Volume objects.
-        """
-        success, output = cls.run_docker_command(["volume", "ls", "--format", "{{json .}}"])
-        if not success:
-            logger.error("Failed to get volumes")
-            return []
-
-        volumes = []
-        for line in output.split('\n'):
-            if line:
-                volume_data = json.loads(line)
-                volumes.append(Volume.from_dict(volume_data))
-        return volumes
-
-    @classmethod
-    def get_networks(cls) -> List[Network]:
-        """
-        Get a list of all Docker networks.
-
-        Returns:
-            List[Network]: A list of Network objects.
-        """
-        success, output = cls.run_docker_command(["network", "ls", "--format", "{{json .}}"])
-        if not success:
-            logger.error("Failed to get networks")
-            return []
-
-        networks = []
-        for line in output.split('\n'):
-            if line:
-                network_data = json.loads(line)
-                networks.append(Network.from_dict(network_data))
-        return networks
-    
 # Example usage
 if __name__ == "__main__":
     docker_manager = DockerEngineManager()
@@ -273,30 +186,6 @@ if __name__ == "__main__":
         if version:
             print(f"Docker version: {version}")
 
-        # Example of getting containers
-        containers = docker_manager.get_containers()
-        print(f"\nFound {len(containers)} containers:")
-        for container in containers:
-            print(container)
-
-        # Example of getting images
-        images = docker_manager.get_images()
-        print(f"\nFound {len(images)} images:")
-        for image in images:
-            print(image)
-
-        # Example of getting volumes
-        volumes = docker_manager.get_volumes()
-        print(f"\nFound {len(volumes)} volumes:")
-        for volume in volumes:
-            print(volume)
-
-        # Example of getting networks
-        networks = docker_manager.get_networks()
-        print(f"\nFound {len(networks)} networks:")
-        for network in networks:
-            print(network)
-
         # Example of running a custom Docker command
         print("\nRunning 'docker info' command:")
         success, output = docker_manager.run_docker_command(["info"])
@@ -304,42 +193,5 @@ if __name__ == "__main__":
             print(output)
         else:
             print("Failed to run 'docker info' command.")
-
-        # Example of stopping a container (if any running)
-        if containers:
-            container_to_stop = containers[0]
-            print(f"\nAttempting to stop container: {container_to_stop.name}")
-            success, output = docker_manager.run_docker_command(["stop", container_to_stop.id])
-            if success:
-                print(f"Successfully stopped container: {container_to_stop.name}")
-            else:
-                print(f"Failed to stop container: {container_to_stop.name}")
-
-        # Example of pulling a new image
-        print("\nPulling 'hello-world' image:")
-        success, output = docker_manager.run_docker_command(["pull", "hello-world"])
-        if success:
-            print("Successfully pulled 'hello-world' image.")
-        else:
-            print("Failed to pull 'hello-world' image.")
-
-        # Example of creating a new volume
-        new_volume_name = "test_volume"
-        print(f"\nCreating new volume: {new_volume_name}")
-        success, output = docker_manager.run_docker_command(["volume", "create", new_volume_name])
-        if success:
-            print(f"Successfully created volume: {new_volume_name}")
-        else:
-            print(f"Failed to create volume: {new_volume_name}")
-
-        # Example of creating a new network
-        new_network_name = "test_network"
-        print(f"\nCreating new network: {new_network_name}")
-        success, output = docker_manager.run_docker_command(["network", "create", new_network_name])
-        if success:
-            print(f"Successfully created network: {new_network_name}")
-        else:
-            print(f"Failed to create network: {new_network_name}")
-
     else:
         print("Failed to ensure Docker is running.")

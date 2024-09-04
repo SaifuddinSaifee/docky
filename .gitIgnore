@@ -1,7 +1,0 @@
-.idea
-venv
-
-.env
-.env.*
-docky-development-tasks.md
-example.json

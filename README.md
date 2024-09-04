@@ -1,4 +1,4 @@
-# Docky 🐳
+# Docky 🐳: Friendly Neighborhood Docker Client 
 
 <p align="center">
   <img src="Assets/Docky%20Logo%20Dark%20bg.svg" alt="Docky Logo" width="300px">

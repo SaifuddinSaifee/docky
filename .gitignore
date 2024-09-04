@@ -1,0 +1,14 @@
+.idea/material_theme_project_new.xml
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/vcs.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/docky.iml
+
+.idea/*
+venv
+
+.env
+.env.*
+docky-development-tasks.md
+example.json
