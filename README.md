@@ -29,7 +29,7 @@ Docky is an open-source, cross-platform Docker management application built with
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/docky.git
+   git clone https://github.com/SaifuddinSaifee/docky.git
    cd docky
    ```
 
