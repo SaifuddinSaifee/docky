@@ -1,6 +1,6 @@
 # Docky 🐳
 
-![Docky Logo](https://via.placeholder.com/150x150.png?text=Docky)
+![Docky Logo Dark bg.svg](Assets/Docky%20Logo%20Dark%20bg.svg)
 
 [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
