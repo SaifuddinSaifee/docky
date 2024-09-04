@@ -1,46 +1,56 @@
-from typing import Any, Dict, List
+# src/models/image.py
+
+from dataclasses import dataclass
+from typing import Optional
 from datetime import datetime
-from .base_model import BaseModel
 
-class Image(BaseModel):
+@dataclass
+class Image:
     """
-    Model representing a Docker image.
+    Represents a Docker image.
     """
-
-    def __init__(self, id: str, tags: List[str], created: datetime, size: int):
-        self.id = id
-        self.tags = tags
-        self.created = created
-        self.size = size
-
-    def to_dict(self) -> Dict[str, Any]:
-        """
-        Convert the Image instance to a dictionary.
-
-        Returns:
-            Dict[str, Any]: A dictionary representation of the Image.
-        """
-        return {
-            "id": self.id,
-            "tags": self.tags,
-            "created": self.created.isoformat(),
-            "size": self.size
-        }
+    id: str
+    repository: str
+    tag: str
+    created_at: datetime
+    created_since: str
+    size: str
+    virtual_size: str
+    shared_size: str
+    unique_size: str
+    containers: str
+    digest: str
 
     @classmethod
-    def from_dict(cls, data: Dict[str, Any]) -> 'Image':
+    def from_dict(cls, data: dict) -> 'Image':
         """
         Create an Image instance from a dictionary.
 
         Args:
-            data (Dict[str, Any]): The dictionary containing the Image data.
+            data (dict): Dictionary containing image data.
 
         Returns:
-            Image: An instance of the Image model.
+            Image: A new Image instance.
         """
         return cls(
-            id=data["id"],
-            tags=data["tags"],
-            created=datetime.fromisoformat(data["created"]),
-            size=data["size"]
+            id=data['ID'],
+            repository=data['Repository'],
+            tag=data['Tag'],
+            created_at=datetime.strptime(data['CreatedAt'], "%Y-%m-%d %H:%M:%S %z %Z"),
+            created_since=data['CreatedSince'],
+            size=data['Size'],
+            virtual_size=data['VirtualSize'],
+            shared_size=data['SharedSize'],
+            unique_size=data['UniqueSize'],
+            containers=data['Containers'],
+            digest=data['Digest']
         )
+
+    def __str__(self) -> str:
+        """
+        Return a string representation of the Image.
+
+        Returns:
+            str: A string representation of the Image.
+        """
+        return f"Image(id={self.id[:12]}, repository={self.repository}, tag={self.tag})"

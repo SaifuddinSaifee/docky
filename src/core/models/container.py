@@ -1,53 +1,62 @@
-from typing import Any, Dict, List
+# src/models/container.py
+
+from dataclasses import dataclass
+from typing import List, Optional
 from datetime import datetime
-from .base_model import BaseModel
 
-class Container(BaseModel):
+@dataclass
+class Container:
     """
-    Model representing a Docker container.
+    Represents a Docker container.
     """
-
-    def __init__(self, id: str, name: str, image: str, status: str,
-                 created: datetime, ports: Dict[str, List[Dict[str, str]]]):
-        self.id = id
-        self.name = name
-        self.image = image
-        self.status = status
-        self.created = created
-        self.ports = ports
-
-    def to_dict(self) -> Dict[str, Any]:
-        """
-        Convert the Container instance to a dictionary.
-
-        Returns:
-            Dict[str, Any]: A dictionary representation of the Container.
-        """
-        return {
-            "id": self.id,
-            "name": self.name,
-            "image": self.image,
-            "status": self.status,
-            "created": self.created.isoformat(),
-            "ports": self.ports
-        }
+    id: str
+    name: str
+    image: str
+    status: str
+    state: str
+    created: datetime
+    ports: str
+    command: str
+    labels: str
+    networks: str
+    mounts: str
+    size: str
+    created_at: str
+    running_for: str
 
     @classmethod
-    def from_dict(cls, data: Dict[str, Any]) -> 'Container':
+    def from_dict(cls, data: dict) -> 'Container':
         """
         Create a Container instance from a dictionary.
 
         Args:
-            data (Dict[str, Any]): The dictionary containing the Container data.
+            data (dict): Dictionary containing container data.
 
         Returns:
-            Container: An instance of the Container model.
+            Container: A new Container instance.
         """
         return cls(
-            id=data["id"],
-            name=data["name"],
-            image=data["image"],
-            status=data["status"],
-            created=datetime.fromisoformat(data["created"]),
-            ports=data["ports"]
+            id=data['ID'],
+            name=data['Names'],
+            image=data['Image'],
+            status=data['Status'],
+            state=data['State'],
+            created=datetime.strptime(data['CreatedAt'], "%Y-%m-%d %H:%M:%S %z %Z"),
+            ports=data['Ports'],
+            command=data['Command'],
+            labels=data['Labels'],
+            networks=data['Networks'],
+            mounts=data['Mounts'],
+            size=data['Size'],
+            created_at=data['CreatedAt'],
+            running_for=data['RunningFor']
         )
+
+    def __str__(self) -> str:
+        """
+        Return a string representation of the Container.
+
+        Returns:
+            str: A string representation of the Container.
+        """
+        return f"Container(id={self.id[:12]}, name={self.name}, status={self.status})"
