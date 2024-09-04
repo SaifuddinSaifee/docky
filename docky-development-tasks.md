@@ -120,14 +120,12 @@ docky/
 │   ├── main.py
 │   │
 │   ├── core/
-│   │   ├── **init**.py
 │   │   ├── docker_engine.py
-│   │   ├── container_manager.py
-│   │   ├── image_manager.py
-│   │   ├── volume_manager.py
-│   │   ├── network_manager.py
-│   │   ├── compose_manager.py
-│   │   └── kubernetes_manager.py
+│   │   ├── services/
+│   │   │   ├── container_service.py
+│   │   │   ├── image_service.py
+│   │   │   ├── volume_service.py
+│   │   │   └── network_service.py
 │   │
 │   ├── models/
 │   │   ├── __init__.py

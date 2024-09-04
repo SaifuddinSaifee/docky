@@ -2,7 +2,7 @@ import subprocess
 import json
 import logging
 from typing import List, Tuple, Optional
-from models.network import Network
+from src.core.models.network import Network
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
