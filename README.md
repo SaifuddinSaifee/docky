@@ -1,6 +1,8 @@
 # Docky 🐳
 
-![Docky Logo Dark bg.svg](Assets/Docky%20Logo%20Dark%20bg.svg)
+<p align="center">
+  <img src="Assets/Docky%20Logo%20Dark%20bg.svg" alt="Docky Logo" width="300px">
+</p>
 
 [![Python Version](https://img.shields.io/badge/python-3.12%2B-blue.svg)](https://www.python.org/downloads/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)

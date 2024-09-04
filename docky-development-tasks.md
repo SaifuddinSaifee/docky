@@ -109,3 +109,122 @@
     - Review and update all documentation
 
 This prioritized list focuses on building the core functionality first, then gradually adding more advanced features. It keeps the project scope manageable while ensuring that the most important Docker Desktop-like features are implemented.
+
+
+# Docky Project Structure
+
+```
+docky/
+│
+├── src/
+│   ├── main.py
+│   │
+│   ├── core/
+│   │   ├── **init**.py
+│   │   ├── docker_engine.py
+│   │   ├── container_manager.py
+│   │   ├── image_manager.py
+│   │   ├── volume_manager.py
+│   │   ├── network_manager.py
+│   │   ├── compose_manager.py
+│   │   └── kubernetes_manager.py
+│   │
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── container.py
+│   │   ├── image.py
+│   │   ├── volume.py
+│   │   └── network.py
+│   │
+│   ├── ui/
+│   │   ├── **init**.py
+│   │   ├── main_window.py
+│   │   ├── sidebar.py
+│   │   ├── toolbar.py
+│   │   ├── status_bar.py
+│   │   ├── views/
+│   │   │   ├── **init**.py
+│   │   │   ├── container_view.py
+│   │   │   ├── image_view.py
+│   │   │   ├── volume_view.py
+│   │   │   ├── network_view.py
+│   │   │   ├── compose_view.py
+│   │   │   └── kubernetes_view.py
+│   │   ├── widgets/
+│   │   │   ├── **init**.py
+│   │   │   ├── container_list_widget.py
+│   │   │   ├── image_list_widget.py
+│   │   │   ├── volume_list_widget.py
+│   │   │   ├── network_list_widget.py
+│   │   │   └── search_widget.py
+│   │   └── dialogs/
+│   │       ├── **init**.py
+│   │       ├── settings_dialog.py
+│   │       └── error_dialog.py
+│   │
+│   ├── services/
+│   │   ├── **init**.py
+│   │   ├── docker_compose_service.py
+│   │   └── kubernetes_service.py
+│   │
+│   └── utils/
+│       ├── **init**.py
+│       ├── docker_utils.py
+│       ├── ui_utils.py
+│       ├── error_handler.py
+│       └── update_checker.py
+│
+├── tests/
+│   ├── **init**.py
+│   ├── test_docker_engine.py
+│   ├── test_container_manager.py
+│   ├── test_image_manager.py
+│   ├── test_volume_manager.py
+│   ├── test_network_manager.py
+│   └── test_ui_components.py
+│
+├── resources/
+│   ├── icons/
+│   ├── styles/
+│   │   └── main.qss
+│   └── translations/
+│
+├── docs/
+│   ├── user_guide.md
+│   └── developer_guide.md
+│
+├── scripts/
+│   ├── build.py
+│   └── package.py
+│
+├── requirements.txt
+├── setup.py
+└── README.md
+```
+
+## Directory Explanations
+
+1. **src/**: Main source code directory.
+   - **main.py**: Application entry point.
+   - **config/**: Configuration files and constants.
+   - **core/**: Core functionality and data models.
+   - **ui/**: UI-related code and resources.
+   - **controllers/**: Business logic and UI controllers.
+   - **services/**: Additional services like Docker Compose and Kubernetes integration.
+   - **utils/**: Utility functions and helper modules.
+
+2. **tests/**: Unit and integration tests.
+
+3. **resources/**: Static resources like icons and translations.
+
+4. **docs/**: Project documentation.
+
+5. **scripts/**: Build and maintenance scripts.
+
+6. **requirements.txt**: Python dependencies.
+
+7. **setup.py**: Package and distribution information.
+
+8. **README.md**: Project overview and documentation.
+
+This structure supports the modular architecture discussed in the strategy, separating concerns and promoting maintainability and scalability.

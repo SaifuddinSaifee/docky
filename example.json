@@ -1,0 +1,24 @@
+[
+  {
+    "Availability": "N/A",
+    "Driver": "local",
+    "Group": "N/A",
+    "Labels": "com.docker.compose.project=data-transformation-backend,com.docker.compose.version=2.29.0,com.docker.compose.volume=redis_test",
+    "Links": "N/A",
+    "Mountpoint": "/var/lib/docker/volumes/data-transformation-backend_redis_test/_data",
+    "Name": "data-transformation-backend_redis_test",
+    "Scope": "local",
+    "Size": "N/A",
+    "Status": "N/A"
+  },
+  {
+    "CreatedAt": "2024-07-23 16:11:49.402882301 +0530 IST",
+    "Driver": "bridge",
+    "ID": "32e6b448d22d",
+    "IPv6": "false",
+    "Internal": "false",
+    "Labels": "com.docker.compose.network=default,com.docker.compose.project=data-transformation-backend,com.docker.compose.version=2.29.0",
+    "Name": "backend",
+    "Scope": "local"
+  }
+]
