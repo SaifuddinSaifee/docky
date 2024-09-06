@@ -32,8 +32,6 @@
    - Implement image listing functionality
    - Add basic image operations (pull, remove)
 
-## Phase 2: Enhanced Features and UI Refinement
-
 8. **Develop Volumes view**
    - Create `VolumeListWidget` in `src/ui/widgets/`
    - Implement volume listing and basic operations
@@ -135,28 +133,42 @@ docky/
 │   │   └── network.py
 │   │
 │   ├── ui/
-│   │   ├── **init**.py
+│   │   ├── __init__.py
 │   │   ├── main_window.py
 │   │   ├── sidebar.py
 │   │   ├── toolbar.py
 │   │   ├── status_bar.py
 │   │   ├── views/
-│   │   │   ├── **init**.py
-│   │   │   ├── container_view.py
-│   │   │   ├── image_view.py
-│   │   │   ├── volume_view.py
-│   │   │   ├── network_view.py
+│   │   │   ├── __init__.py
+│   │   │   ├── containers/
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── container_list_view.py
+│   │   │   │   ├── container_detail_view.py
+│   │   │   │   ├── container_logs_view.py
+│   │   │   │   └── container_stats_view.py
+│   │   │   ├── images/
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── image_list_view.py
+│   │   │   │   └── image_detail_view.py
+│   │   │   ├── volumes/
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── volume_list_view.py
+│   │   │   │   └── volume_detail_view.py
+│   │   │   ├── networks/
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── network_list_view.py
+│   │   │   │   └── network_detail_view.py
 │   │   │   ├── compose_view.py
 │   │   │   └── kubernetes_view.py
 │   │   ├── widgets/
-│   │   │   ├── **init**.py
-│   │   │   ├── container_list_widget.py
-│   │   │   ├── image_list_widget.py
-│   │   │   ├── volume_list_widget.py
-│   │   │   ├── network_list_widget.py
+│   │   │   ├── __init__.py
+│   │   │   ├── container_widgets.py
+│   │   │   ├── image_widgets.py
+│   │   │   ├── volume_widgets.py
+│   │   │   ├── network_widgets.py
 │   │   │   └── search_widget.py
 │   │   └── dialogs/
-│   │       ├── **init**.py
+│   │       ├── __init__.py
 │   │       ├── settings_dialog.py
 │   │       └── error_dialog.py
 │   │

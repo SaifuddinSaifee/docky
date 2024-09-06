@@ -152,4 +152,10 @@ def get_container_logs(container_id: str, tail: Optional[int] = None) -> Optiona
         logger.error(f"Failed to get logs for container {container_id}")
         return None
 
+# Example usage
+if __name__ == "__main__":
+    containers = get_containers()
+    for container in containers:
+        print(container)
+
 # Add more container-related functions as needed

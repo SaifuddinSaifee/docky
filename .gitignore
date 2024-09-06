@@ -12,3 +12,4 @@ venv
 .env.*
 docky-development-tasks.md
 example.json
+instructions.txt

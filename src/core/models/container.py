@@ -59,4 +59,4 @@ class Container:
         Returns:
             str: A string representation of the Container.
         """
-        return f"Container(id={self.id[:12]}, name={self.name}, status={self.status})"
+        return f"Container(name={self.name}, image={self.image}, id={self.id[:12]}, status={self.status})"
