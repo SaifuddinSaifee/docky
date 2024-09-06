@@ -2,7 +2,7 @@ import subprocess
 import json
 import logging
 from typing import List, Tuple, Optional
-from src.core.models.image import Image
+from ..models.image import Image
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')

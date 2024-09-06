@@ -60,3 +60,13 @@ class Container:
             str: A string representation of the Container.
         """
         return f"Container(name={self.name}, image={self.image}, id={self.id[:12]}, status={self.status})"
+
+    def to_tuple(self) -> tuple:
+        """
+        Convert the Container instance to a tuple matching the sample_data structure.
+
+        Returns:
+            tuple: A tuple containing the container name, image, status, ports, and running time.
+        """
+        return (self.name, self.image, self.state, self.ports, self.running_for)
+

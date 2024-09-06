@@ -155,7 +155,9 @@ def get_container_logs(container_id: str, tail: Optional[int] = None) -> Optiona
 # Example usage
 if __name__ == "__main__":
     containers = get_containers()
+    # print(containers)
+    print(type(containers))
     for container in containers:
-        print(container)
+        print(type(container))
 
 # Add more container-related functions as needed

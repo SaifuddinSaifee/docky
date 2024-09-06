@@ -2,7 +2,7 @@ import subprocess
 import json
 import logging
 from typing import List, Tuple, Optional
-from src.core.models.volume import Volume
+from ..models.volume import Volume
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
